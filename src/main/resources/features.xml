@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="com.demo">
+
+    <feature name="camel-msf-demo" resolver="(obr)" version="${project.version}">
+        <feature dependency="true" >camel</feature>
+        <feature dependency="true" >camel-jaxb</feature>
+        <feature dependency="true" >camel-blueprint</feature>
+        <bundle>mvn:com.demo/msf/${project.version}</bundle>
+    </feature>
+
+</features>
