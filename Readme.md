@@ -50,3 +50,25 @@ All of the above can also be done by (first setting variables and then) running 
 #### Create service from properties
     profile-import file:demo.profile.zip
     watch camel:context-list
+
+
+
+cd jboss-fuse-6.3.0.redhat-*
+cd data/git/local/fabric/fabric/profiles
+cp -a hawtio.profile/ kevin.profile
+echo "a=b" >> kevin.profile/my.properties
+git add -A .
+git commit -m"Messing around in bash"
+git push --set-upstream origin 2.0
+
+profile-display --version 2.0 kevin
+
+
+
+
+
+
+bin/client cluster-list | grep fabric-repo | grep -o 'http.*'
+
+
+
