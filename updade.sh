@@ -9,12 +9,7 @@ KARAF_USER=admin
 KARAF_PASSWORD=admin
 CLIENT_INVOCATION_MACRO="${FUSE_INSTALL_PATH}${FUSE_INSTALL_FOLDER}bin/ -u $KARAF_USER -p $KARAF_PASSWORD -r 60"
 CLONE_DIR=/tmp
-PROJECT_CONFIGS=/Users/bibryam/Desktop/msf/deployment/configs
-
-#cd ${FUSE_INSTALL_PATH}${FUSE_INSTALL_FOLDER}bin/
-
-
-
+PROJECT_CONFIGS=/Users/bibryam/Desktop/msf/deployment/configs/profiles/*
 
 update_fabric_profile (){
 	local version=$1
@@ -27,15 +22,15 @@ update_fabric_profile (){
 	git clone -b $version http://$KARAF_USER:$KARAF_PASSWORD@$git_host $CLONE_DIR/tmp-git
 	cd $CLONE_DIR/tmp-git/
 	git checkout -b $version
-    cp -rf $PROJECT_CONFIGS/profiles/* ./fabric/profiles/
+    cp -rf $PROJECT_CONFIGS ./fabric/profiles/
 
 	git add *
 	git config user.email "ESB@openairlines.org"
 	git config user.name "ESB deployer process"
 	git commit -a -m "Update Fuse configuration"
 	git push origin $version
-    rm -rf $CLONE_DIR/tmp-git
-	cd $old_path
+#    rm -rf $CLONE_DIR/tmp-git
+#	cd $old_path
 }
 
 
